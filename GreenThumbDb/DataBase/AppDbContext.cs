@@ -1,13 +1,19 @@
-﻿using GreenThumbDb.Models;
+﻿using EntityFrameworkCore.EncryptColumn.Extension;
+using EntityFrameworkCore.EncryptColumn.Interfaces;
+using EntityFrameworkCore.EncryptColumn.Util;
+using GreenThumbDb.Managers;
+using GreenThumbDb.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace GreenThumbDb.DataBase
 {
     public class AppDbContext : DbContext
     {
+
+        private readonly IEncryptionProvider _encryptionProvider;
         public AppDbContext()
         {
-
+            _encryptionProvider = new GenerateEncryptionProvider(KeyManager.GetEncryptionKey());
         }
         public DbSet<Garden> Gardens { get; set; }
         public DbSet<Instruction> Instructions { get; set; }
@@ -25,6 +31,8 @@ namespace GreenThumbDb.DataBase
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<GardenPlants>().HasKey(gp => new { gp.PlantId, gp.GardenId });
+
+            modelBuilder.UseEncryption(_encryptionProvider);
         }
     }
 }

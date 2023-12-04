@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using GreenThumbDb.DataBase;
+using System.Windows;
 
 namespace GreenThumbDb
 {
@@ -10,6 +11,8 @@ namespace GreenThumbDb
         public MainWindow()
         {
             InitializeComponent();
+
+            using (AppDbContext context = new()) ;
 
         }
     }
