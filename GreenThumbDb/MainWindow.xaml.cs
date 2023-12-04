@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 
 namespace GreenThumbDb
 {
@@ -11,7 +10,7 @@ namespace GreenThumbDb
         public MainWindow()
         {
             InitializeComponent();
-            Console.WriteLine("HEJ");
+
         }
     }
 }
