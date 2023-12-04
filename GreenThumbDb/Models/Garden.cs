@@ -7,6 +7,7 @@ namespace GreenThumbDb.Models
     public class Garden
     {
         [Key]
+        [ForeignKey("User")]
         [Column("id")]
         public int Id { get; set; }
         [Column("name)")]

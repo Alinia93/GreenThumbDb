@@ -4,6 +4,7 @@ namespace GreenThumbDb.Models
 {
     public class GardenPlants
     {
+
         [Column("plant_id")]
         public int PlantId { get; set; }
         public Plant Plant { get; set; } = null!;

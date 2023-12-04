@@ -1,9 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GreenThumbDb.Models
 {
     public class User
     {
+        [Key]
         [Column("id")]
         public int Id { get; set; }
         [Column("user_name")]
@@ -11,9 +13,8 @@ namespace GreenThumbDb.Models
         [Column("password")]
         public string Password { get; set; } = null!;
 
-        [Column("garden")]
-        public int GardenId { get; set; }
-        public Garden Garden { get; set; } = null!;
+        public Garden? Garden { get; set; }
+
     }
 }
 
