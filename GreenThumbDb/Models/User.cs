@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EntityFrameworkCore.EncryptColumn.Attribute;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GreenThumbDb.Models
@@ -11,6 +12,7 @@ namespace GreenThumbDb.Models
         [Column("user_name")]
         public string UserName { get; set; } = null!;
         [Column("password")]
+        [EncryptColumn]
         public string Password { get; set; } = null!;
 
         public Garden? Garden { get; set; }

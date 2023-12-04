@@ -14,6 +14,6 @@ namespace GreenThumbDb.Models
         public string Description { get; set; } = null!;
         [Column("plant_id")]
         public int PlantId { get; set; }
-        public Plant? Plant { get; set; }
+        public Plant Plant { get; set; } = null!;
     }
 }
