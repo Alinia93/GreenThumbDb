@@ -14,10 +14,8 @@ namespace GreenThumbDb.Models
         [Column("botanical_name")]
         public string BotanicalName { get; set; } = null!;
         [Column("family")]
-        public string Family { get; set; } = null!;
-        [Column("description")]
+        public string? Family { get; set; }
 
-        public string? Decription { get; set; }
         [Column("color")]
         public string Color { get; set; } = null!;
         [Column("image_url")]

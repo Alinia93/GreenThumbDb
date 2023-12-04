@@ -10,7 +10,7 @@ namespace GreenThumbDb.Managers
         {
             if (File.Exists("key.txt"))
             {
-                return File.ReadAllText("C:\\Users\\alini\\OneDrive\\Skrivbord\\Ny mapp(2)\\key.txt");
+                return File.ReadAllText("key.txt");
             }
             else
             {
