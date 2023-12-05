@@ -11,6 +11,7 @@ namespace GreenThumbDb.Models
         [Column("name")]
         public string Name { get; set; } = null!;
         [Column("description")]
+        [MaxLength(350)]
         public string Description { get; set; } = null!;
         [Column("plant_id")]
         public int PlantId { get; set; }

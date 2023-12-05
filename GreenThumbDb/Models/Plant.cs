@@ -17,7 +17,7 @@ namespace GreenThumbDb.Models
         public string? Family { get; set; }
 
         [Column("color")]
-        public string Color { get; set; } = null!;
+        public string? Color { get; set; }
         [Column("image_url")]
         public string? ImageUrl { get; set; }
 
