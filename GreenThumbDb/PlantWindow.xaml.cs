@@ -61,5 +61,20 @@ namespace GreenThumbDb
         {
 
         }
+
+        private void btnGoBack_Click(object sender, RoutedEventArgs e)
+        {
+            ComboBoxItem item = (ComboBoxItem)cmbPlants.SelectedItem;
+            Plant selectedPlant = (Plant)item.Tag;
+
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AddPlantWindow addPlantWindow = new();
+            addPlantWindow.Show();
+            Close();
+        }
     }
 }

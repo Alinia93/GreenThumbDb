@@ -23,10 +23,7 @@ namespace GreenThumbDb.Repository
 
         }
 
-        public void Complete()
-        {
-            _context.SaveChanges();
-        }
+
 
     }
 }

@@ -12,7 +12,7 @@ namespace GreenThumbDb.Models
         [Column("english_name")]
         public string EnglishName { get; set; } = null!;
         [Column("botanical_name")]
-        public string BotanicalName { get; set; } = null!;
+        public string? BotanicalName { get; set; }
         [Column("family")]
         public string? Family { get; set; }
 

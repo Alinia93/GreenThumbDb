@@ -36,6 +36,10 @@ namespace GreenThumbDb.Repository
             _dbSet.Remove(entity);
         }
 
+        public void Complete()
+        {
+            _context.SaveChanges();
+        }
 
     }
 }
