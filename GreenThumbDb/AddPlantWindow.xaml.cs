@@ -41,6 +41,7 @@ namespace GreenThumbDb
                 newPlant.BotanicalName = txtBotanicalName.Text;
                 newPlant.Family = txtPlantFamily.Text;
                 newPlant.Color = txtColor.Text;
+                MessageBox.Show("Plant is added.Now you can give your plant instructions! Then press save.");
 
             }
             else
@@ -51,12 +52,16 @@ namespace GreenThumbDb
         }
 
         private void btnAddInsctructions_Click(object sender, RoutedEventArgs e)
+
         {
+
             if (txtInstructionName.Text == "" && txtDescription.Text == "")
             {
                 MessageBox.Show("You have to fill in the instructions name and the instruction description!", "Warning");
                 return;
             }
+            txtInstructionName.Text = "";
+            txtDescription.Text = "";
 
             string instructionName = txtInstructionName.Text;
             string description = txtDescription.Text;
@@ -86,9 +91,17 @@ namespace GreenThumbDb
             {
                 UnitOfWorkRepository uow = new(context);
                 uow.PlantRepository.Add(newPlant);
-                uow.PlantRepository.Complete();
+                uow.Complete();
             }
+            MessageBox.Show("Your plant is saved!", "Saved");
 
+            PlantWindow plantWindow = new();
+            plantWindow.Show();
+            Close();
+        }
+
+        private void btnGoBack_Click(object sender, RoutedEventArgs e)
+        {
             PlantWindow plantWindow = new();
             plantWindow.Show();
             Close();

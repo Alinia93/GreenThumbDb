@@ -7,6 +7,8 @@ namespace GreenThumbDb.Repository
 {
     public class GenericRepository<T> where T : class
     {
+
+
         private readonly AppDbContext _context;
         private readonly DbSet<T> _dbSet;
         public GenericRepository(AppDbContext context)
@@ -36,10 +38,7 @@ namespace GreenThumbDb.Repository
             _dbSet.Remove(entity);
         }
 
-        public void Complete()
-        {
-            _context.SaveChanges();
-        }
+
 
     }
 }

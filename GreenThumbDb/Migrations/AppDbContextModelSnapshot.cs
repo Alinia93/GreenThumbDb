@@ -24,13 +24,11 @@ namespace GreenThumbDb.Migrations
             modelBuilder.Entity("GreenThumbDb.Models.Garden", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("name)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("UserId")
                         .HasColumnType("int")
@@ -38,7 +36,17 @@ namespace GreenThumbDb.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
                     b.ToTable("Gardens");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            UserId = 1
+                        });
                 });
 
             modelBuilder.Entity("GreenThumbDb.Models.GardenPlants", b =>
@@ -606,12 +614,6 @@ namespace GreenThumbDb.Migrations
                         {
                             Id = 1,
                             Password = "BETzSRAPc3/w6srQ6jx5bw==",
-                            UserName = "Alinia"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Password = "BETzSRAPc3/w6srQ6jx5bw==",
                             UserName = "user"
                         });
                 });
@@ -620,7 +622,7 @@ namespace GreenThumbDb.Migrations
                 {
                     b.HasOne("GreenThumbDb.Models.User", "User")
                         .WithOne("Garden")
-                        .HasForeignKey("GreenThumbDb.Models.Garden", "Id")
+                        .HasForeignKey("GreenThumbDb.Models.Garden", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

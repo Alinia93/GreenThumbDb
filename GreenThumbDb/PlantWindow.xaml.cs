@@ -59,7 +59,18 @@ namespace GreenThumbDb
 
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
+            if (cmbPlants.SelectedItem == null)
+            {
+                MessageBox.Show("You have to choose a plant to see details", "Warning");
+                return;
+            }
 
+            ComboBoxItem selectedItem = (ComboBoxItem)cmbPlants.SelectedItem;
+            Plant selectedPlant = (Plant)selectedItem.Tag;
+
+            DetailsWindow detailsWindow = new(selectedPlant);
+            detailsWindow.Show();
+            Close();
         }
 
         private void btnGoBack_Click(object sender, RoutedEventArgs e)

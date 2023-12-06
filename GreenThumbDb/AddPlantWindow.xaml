@@ -64,8 +64,8 @@
         <ListView Name="lstPlantInstructions" Grid.Column="5" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="4" Margin="20,0,0,20"/>
         <Label Grid.Column="5" Grid.Row="2" Grid.ColumnSpan="2" Content="Added instructions" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
 
-        <Button Name="btnSavePlant" Grid.Column="6" Grid.Row="7" Content="Save plant" Click="btnSavePlant_Click"/>
-
+        <Button Name="btnSavePlant" Grid.Column="5" Grid.Row="7" Content="Save plant" Click="btnSavePlant_Click"/>
+        <Button Name="btnGoBack" Grid.Column="6" Grid.Row="7" Content="Go Back" Margin="20,0" Click="btnGoBack_Click"/>
         <TextBox Name="txtAddInstructionsFor" IsEnabled="False" Grid.Column="4" Grid.Row="3"  Margin="0,0,0,25" IsReadOnly="True"/>
         <TextBox Name="txtInstructionName" IsEnabled="False" Grid.Column="4" Grid.Row="4"  Margin="0,0,0,25"/>
         <TextBox Name="txtDescription" IsEnabled="False" Grid.Column="4" Grid.Row="5"  Margin="0,0,0,25"/>

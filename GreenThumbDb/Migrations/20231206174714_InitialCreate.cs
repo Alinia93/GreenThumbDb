@@ -15,7 +15,7 @@ namespace GreenThumbDb.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     english_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    botanical_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    botanical_name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     family = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     color = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     image_url = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -64,16 +64,16 @@ namespace GreenThumbDb.Migrations
                 name: "Gardens",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false),
-                    name = table.Column<string>(name: "name)", type: "nvarchar(max)", nullable: false),
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     user_id = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Gardens", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Gardens_Users_id",
-                        column: x => x.id,
+                        name: "FK_Gardens_Users_user_id",
+                        column: x => x.user_id,
                         principalTable: "Users",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -132,7 +132,12 @@ namespace GreenThumbDb.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "id", "password", "user_name" },
-                values: new object[] { 1, "+DRFZc6gI+vGZ9T/iS4wGQ==", "Alinia" });
+                values: new object[] { 1, "BETzSRAPc3/w6srQ6jx5bw==", "user" });
+
+            migrationBuilder.InsertData(
+                table: "Gardens",
+                columns: new[] { "id", "user_id" },
+                values: new object[] { 1, 1 });
 
             migrationBuilder.InsertData(
                 table: "Instructions",
@@ -179,9 +184,13 @@ namespace GreenThumbDb.Migrations
                     { 38, "Water regularly especially during hot weather. Keep soil moist but not waterlogged because these plants are vulnerable to crown rot.", "Delphinium: Water", 17 },
                     { 39, "Delphiniums put on their best show in plenty of sun, 6 to 8 hours daily. However, this is not a plant that does well in dry heat. A location that offers morning sun with light afternoon shade during hot weather can improve and extend flowering.", "Delphinium: Light", 17 },
                     { 40, "Once sprouted, water your dahlias once or twice a week. Make sure to water deeply, as large tubers may be planted six inches deep.", "Dahlia: Water", 18 },
-                    { 41, "Dahlias prefer rich, loamy soil with plenty of organic matter that drains well. ", "Dahlia: Soil", 18 },
-                    { 42, "Allow the plants to dry between waterings, but not completely. These plants are more susceptible to root rot, so be very careful never to allow them to sit in standing water.", "Dragon Tree: Water", 19 }
+                    { 41, "Dahlias prefer rich, loamy soil with plenty of organic matter that drains well. ", "Dahlia: Soil", 18 }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Instructions",
+                columns: new[] { "id", "description", "name", "plant_id" },
+                values: new object[] { 42, "Allow the plants to dry between waterings, but not completely. These plants are more susceptible to root rot, so be very careful never to allow them to sit in standing water.", "Dragon Tree: Water", 19 });
 
             migrationBuilder.InsertData(
                 table: "Instructions",
@@ -192,6 +201,12 @@ namespace GreenThumbDb.Migrations
                 name: "IX_GardenPlants_garden_id",
                 table: "GardenPlants",
                 column: "garden_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Gardens_user_id",
+                table: "Gardens",
+                column: "user_id",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Instructions_plant_id",

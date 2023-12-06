@@ -556,17 +556,22 @@ namespace GreenThumbDb.DataBase
                       PlantId = 19
 
                   });
+
             modelBuilder.Entity<User>().HasData(new User()
             {
                 Id = 1,
-                UserName = "Alinia",
-                Password = "password"
-            }, new User()
-            {
-                Id = 2,
                 UserName = "user",
-                Password = "password"
+                Password = "password",
+
             });
+            modelBuilder.Entity<Garden>().HasData(new Garden()
+            {
+                Id = 1,
+                UserId = 1
+
+
+            });
+
         }
     }
 }

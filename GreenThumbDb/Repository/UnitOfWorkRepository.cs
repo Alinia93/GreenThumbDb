@@ -15,12 +15,19 @@ namespace GreenThumbDb.Repository
 
         public UnitOfWorkRepository(AppDbContext context)
         {
-            GardenPlantsRepository = new(context);
+            _context = context;
+            GardenRepository = new(context);
             GardenPlantsRepository = new(context);
             InstructionRepository = new(context);
             PlantRepository = new(context);
             UserRepository = new(context);
 
+        }
+
+
+        public void Complete()
+        {
+            _context.SaveChanges();
         }
 
 
