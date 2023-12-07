@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GreenThumbDb"
         mc:Ignorable="d"
-        Title="AddPlantWindow" Height="450" Width="800">
+        Title="AddPlantWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -32,42 +32,44 @@
 
         <Image Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="6" Margin="100,5" Opacity="0.2">
             <Image.Source>
-
                 <BitmapImage UriSource="C:\Users\alini\OneDrive\Skrivbord\Databasutveckling\Slutuppgift\GreenThumbDb\GreenThumbDb\pictures\FrontPicture.png"/>
             </Image.Source>
-
         </Image>
+        
         <Label Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" Content="GREEN THUMB" FontSize="40" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" FontWeight="Bold" FontFamily="Bahnschrift Condensed" Foreground="#FF125600"/>
 
-        <TextBlock Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Text="Here you can add a plant and instructions.You don't have to fill in all the information,just the name of the plant!" TextWrapping="Wrap"/>
-
-        <Label Grid.Column="1" Grid.Row="3" Content="Plant name:" HorizontalContentAlignment="Right" FontWeight="Bold"/>
-        <TextBlock Grid.Column="1" Grid.Row="4" Text="Botanical/latin name:" HorizontalAlignment="Right" TextWrapping="Wrap"  FontWeight="Bold"/>
+        <TextBlock Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Text="Here you can add a plant and instructions. &#x0a;You don't have to fill in all the information, just the name of the plant!" TextWrapping="Wrap" FontFamily="MV Boli" FontSize="11"  />
+        <Label Grid.Column="1" Grid.Row="3" Content="Plant name:"  HorizontalContentAlignment="Right" FontWeight="Bold"/>
+        <TextBlock Grid.Column="1" Grid.Row="4" Text="Botanical/latin name: " HorizontalAlignment="Right" TextWrapping="Wrap"  FontWeight="Bold"/>
         <Label Grid.Column="1" Grid.Row="5" Content="Plant family:" HorizontalContentAlignment="Right"  FontWeight="Bold"/>
         <Label Grid.Column="1" Grid.Row="6" Content="Color:" HorizontalContentAlignment="Right" FontWeight="Bold"/>
 
-        <TextBox Name="txtPlantName" Grid.Column="2" Grid.Row="3" Margin="0,0,0,25"/>
-        <TextBox Name="txtBotanicalName" Grid.Column="2" Grid.Row="4" Margin="0,0,0,25"/>
-        <TextBox Name="txtPlantFamily" Grid.Column="2" Grid.Row="5" Margin="0,0,0,25"/>
-        <TextBox Name="txtColor" Grid.Column="2" Grid.Row="6" Margin="0,0,0,25"/>
+        <TextBox Name="txtPlantName" Grid.Column="2" Grid.Row="3" Margin="0,0,20,25"/>
+        <TextBox Name="txtBotanicalName" Grid.Column="2" Grid.Row="4" Margin="0,0,20,25"/>
+        <TextBox Name="txtPlantFamily" Grid.Column="2" Grid.Row="5" Margin="0,0,20,25"/>
+        <TextBox Name="txtColor" Grid.Column="2" Grid.Row="6" Margin="0,0,20,25"/>
 
-        <Button Name="btnAddPlant" Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="2" Margin="70,0,70,0" Content="Add plant" Click="btnAddPlant_Click"/>
+        
 
         <Label Grid.Column="3" Grid.Row="3" Content="Add instruction for:"  HorizontalContentAlignment="Right" FontWeight="Bold" />
         <Label Grid.Column="3" Grid.Row="4" Content="Instruction name:" HorizontalContentAlignment="Right" FontWeight="Bold"/>
         <Label Grid.Column="3" Grid.Row="5" Content="Description:" HorizontalContentAlignment="Right" FontWeight="Bold"/>
+        
+        <Button Name="btnAddPlant" Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="2" Margin="70,0,70,0" Content="Add plant" Click="btnAddPlant_Click" Background="#FF77E2FF" FontFamily="Book Antiqua" FontSize="14" />
+        <Button Name="btnAddInsctructions" Grid.Column="3" Grid.Row="7" Grid.ColumnSpan="2" Margin="70,0,70,0" Content="Add instructions" Background="#FF77E2FF" Click="btnAddInsctructions_Click" FontFamily="Book Antiqua" FontSize="14" IsEnabled="False" />
 
-        <Button Name="btnAddInsctructions" Grid.Column="3" Grid.Row="7" Grid.ColumnSpan="2" Margin="70,0,70,0" Content="Add instructions" Click="btnAddInsctructions_Click"/>
-
-        <Label Grid.Column="5" Grid.Row="1"/>
+       
 
         <ListView Name="lstPlantInstructions" Grid.Column="5" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="4" Margin="20,0,0,20"/>
-        <Label Grid.Column="5" Grid.Row="2" Grid.ColumnSpan="2" Content="Added instructions" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+        <Label Grid.Column="5" Grid.Row="2" Grid.ColumnSpan="2" Content="Added instructions" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" FontFamily="Arial" FontWeight="Bold" FontSize="18"/>
 
-        <Button Name="btnSavePlant" Grid.Column="5" Grid.Row="7" Content="Save plant" Click="btnSavePlant_Click"/>
+        <Button Name="btnSavePlant" Grid.Column="5" Grid.Row="7" Content="Save plant" Click="btnSavePlant_Click" Margin="20,0,0,0"/>
         <Button Name="btnGoBack" Grid.Column="6" Grid.Row="7" Content="Go Back" Margin="20,0" Click="btnGoBack_Click"/>
         <TextBox Name="txtAddInstructionsFor" IsEnabled="False" Grid.Column="4" Grid.Row="3"  Margin="0,0,0,25" IsReadOnly="True"/>
         <TextBox Name="txtInstructionName" IsEnabled="False" Grid.Column="4" Grid.Row="4"  Margin="0,0,0,25"/>
         <TextBox Name="txtDescription" IsEnabled="False" Grid.Column="4" Grid.Row="5"  Margin="0,0,0,25"/>
+
+        <Border Grid.Column="2" Grid.Row="3" Grid.RowSpan="10"  Width="2" Margin="120,0,0,0" BorderBrush="Black" BorderThickness="2"/>
+        
     </Grid>
 </Window>

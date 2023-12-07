@@ -82,7 +82,8 @@ namespace GreenThumbDb
             UpdateRegisterButton();
         }
 
-        private void btnGoBack_Click(object sender, RoutedEventArgs e)
+
+        private void btnGoBack_Click_1(object sender, RoutedEventArgs e)
         {
             OpenMainWindow();
         }

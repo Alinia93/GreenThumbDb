@@ -13,27 +13,20 @@ namespace GreenThumbDb.Managers
         public static User? SignedInUser;
         public static bool SignInUser(string userName, string password)
         {
-
             using (AppDbContext context = new())
             {
-
-                var userPassword = context.Users.FirstOrDefault(u => u.UserName == userName && u.Password == password);
-
-                if (userPassword != null)
+                //Hämtar user med samma lösenord och password. Inkluderar Garden för att SignedInUser ska ha detta inkluderat
+                User? user = context.Users.Include(u => u.Garden).FirstOrDefault(u => u.UserName == userName && u.Password == password);
+                if (user != null)
                 {
-
-                    SignedInUser = context.Users.Include(u => u.Garden).First(u => u.UserName == userName);
+                    SignedInUser = user;
                     return true;
-
                 }
                 else
                 {
                     return false;
                 }
-
             }
-
-
         }
 
         public static bool CheckUserName(string userName)
@@ -62,10 +55,10 @@ namespace GreenThumbDb.Managers
                     UserName = userName,
                     Password = password,
 
-
                 };
                 uow.UserRepository.Add(user);
                 uow.Complete();
+                //Skapar en Garden på varje ny user. Sparar Garden efter usern eftersom Garden har userns id
 
                 Garden garden = new Garden()
                 {
@@ -74,7 +67,6 @@ namespace GreenThumbDb.Managers
                 };
                 uow.GardenRepository.Add(garden);
                 uow.Complete();
-
             }
 
         }

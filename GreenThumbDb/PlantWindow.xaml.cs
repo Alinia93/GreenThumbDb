@@ -13,39 +13,44 @@ namespace GreenThumbDb
     /// </summary>
     public partial class PlantWindow : Window
     {
-        List<Plant> plants = new();
         public PlantWindow()
         {
             InitializeComponent();
             UpdateUi();
-
         }
         private void UpdateUi()
         {
             cmbPlants.Items.Clear();
+            txtSearchPlant.Text = "";
+            cmbPlants.SelectedItem = null;
+
             using (AppDbContext context = new())
             {
                 UnitOfWorkRepository uow = new(context);
-                plants = uow.PlantRepository.GetAll();
+                List<Plant> plants = uow.PlantRepository.GetAll();
 
-            }
-            foreach (Plant plant in plants)
-            {
-                ComboBoxItem item = new();
-                item.Tag = plant;
-                item.Content = plant.EnglishName;
-                cmbPlants.Items.Add(item);
+
+                foreach (Plant plant in plants)
+                {
+                    ComboBoxItem item = new();
+                    item.Tag = plant;
+                    item.Content = plant.EnglishName;
+                    cmbPlants.Items.Add(item);
+                }
             }
         }
-
         private void btnSearchForPlant_Click(object sender, RoutedEventArgs e)
         {
+            if (txtSearchPlant.Text == "")
+            {
+                MessageBox.Show("You have not written anything in the search box.", "Warning");
+                return;
+            }
             string plantName = txtSearchPlant.Text;
 
             var foundPlant = PlantManager.SearchForPlant(plantName);
             if (foundPlant != null)
             {
-
                 foreach (ComboBoxItem item in cmbPlants.Items)
                 {
                     if (foundPlant.Id == ((Plant)item.Tag).Id)
@@ -61,12 +66,11 @@ namespace GreenThumbDb
                 MessageBox.Show("We could not find that plant. Try again", "Warning");
             }
         }
-
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
             if (cmbPlants.SelectedItem == null)
             {
-                MessageBox.Show("You have to choose a plant to see details", "Warning");
+                MessageBox.Show("You have to choose a plant to see details.", "Warning");
                 return;
             }
 
@@ -78,48 +82,44 @@ namespace GreenThumbDb
             Close();
         }
 
-        private void btnGoBack_Click(object sender, RoutedEventArgs e)
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            ComboBoxItem item = (ComboBoxItem)cmbPlants.SelectedItem;
-            Plant selectedPlant = (Plant)item.Tag;
+            if (cmbPlants.SelectedItem == null)
+            {
+                MessageBox.Show("You have to select a plant to be able to remove it.", "Warning");
+                return;
+            }
+            ComboBoxItem selectedItem = (ComboBoxItem)cmbPlants.SelectedItem;
+            Plant plant = (Plant)selectedItem.Tag;
+            using (AppDbContext context = new())
+            {
+                UnitOfWorkRepository uow = new(context);
+                uow.PlantRepository.Delete(plant);
+                uow.Complete();
+                MessageBox.Show("The plant is removed", "Removed");
 
-
+                UpdateUi();
+            }
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnGoBack_Click_1(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new();
+            mainWindow.Show();
+            Close();
+        }
+        private void btnAddNewPlant_Click(object sender, RoutedEventArgs e)
         {
             AddPlantWindow addPlantWindow = new();
             addPlantWindow.Show();
             Close();
         }
 
-        private void btnGoToYourGarden_Click(object sender, RoutedEventArgs e)
+        private void btnGoToYourGarden_Click_1(object sender, RoutedEventArgs e)
         {
             MyGardenWindow myGardenWindow = new();
             myGardenWindow.Show();
             Close();
-        }
 
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
-        {
-            if (cmbPlants.SelectedItem != null)
-            {
-                ComboBoxItem selectedItem = (ComboBoxItem)cmbPlants.SelectedItem;
-                Plant plant = (Plant)selectedItem.Tag;
-                using (AppDbContext context = new())
-                {
-                    UnitOfWorkRepository uow = new(context);
-                    uow.PlantRepository.Delete(plant);
-                    uow.Complete();
-                    MessageBox.Show("The plant is removed", "Removed");
-                    cmbPlants.SelectedItem = null;
-                    UpdateUi();
-                }
-            }
-            else
-            {
-                MessageBox.Show("You have to select a plant to be able to remove it.", "Warning");
-            }
         }
     }
 }

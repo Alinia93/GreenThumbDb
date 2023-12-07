@@ -571,6 +571,13 @@ namespace GreenThumbDb.DataBase
 
 
             });
+            modelBuilder.Entity<GardenPlants>().HasData(new GardenPlants()
+
+            {
+                GardenId = 1,
+                PlantId = 15
+
+            });
 
         }
     }

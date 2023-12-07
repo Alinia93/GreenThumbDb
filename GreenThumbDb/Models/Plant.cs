@@ -18,8 +18,6 @@ namespace GreenThumbDb.Models
 
         [Column("color")]
         public string? Color { get; set; }
-        [Column("image_url")]
-        public string? ImageUrl { get; set; }
 
         public List<Instruction> Instructions { get; set; } = new();
         public List<GardenPlants> GardenPlants { get; set; } = new();

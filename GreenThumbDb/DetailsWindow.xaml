@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GreenThumbDb"
         mc:Ignorable="d"
-        Title="DetailsWindow" Height="450" Width="800">
+        Title="DetailsWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -35,20 +35,20 @@
         </Image>
         <Label Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Content="GREEN THUMB" FontSize="50" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" FontWeight="Bold" FontFamily="Bahnschrift Condensed" Foreground="#FF125600"/>
 
-        <TextBlock Grid.Column="1" Grid.Row="2" Text="Plant name:" HorizontalAlignment="Right" />
-        <TextBlock Grid.Column="1" Grid.Row="3" Text="Botanical name:" HorizontalAlignment="Right"/>
-        <TextBlock Grid.Column="1" Grid.Row="4" Text="Family:" HorizontalAlignment="Right"/>
-        <TextBlock Grid.Column="1" Grid.Row="5" Text="Color:" HorizontalAlignment="Right"/>
-        <TextBlock Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" Text="Plant instructions:" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-        <ListView Name="lstInstructions" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="20,0,0,0"/>
+        <TextBlock Grid.Column="1" Grid.Row="2" Text="Plant name:"  HorizontalAlignment="Right" FontSize="20" FontFamily="Arial" FontWeight="Bold" />
+        <TextBlock Grid.Column="1" Grid.Row="3" Text="Botanical name:" HorizontalAlignment="Right" FontSize="20" FontFamily="Arial" FontWeight="Bold"/>
+        <TextBlock Grid.Column="1" Grid.Row="4" Text="Family:" HorizontalAlignment="Right" FontSize="20" FontFamily="Arial" FontWeight="Bold"/>
+        <TextBlock Grid.Column="1" Grid.Row="5" Text="Color:" HorizontalAlignment="Right" FontSize="20" FontFamily="Arial" FontWeight="Bold"/>
+        <TextBlock Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" Text="Plant instructions:" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontFamily="Book Antiqua" FontWeight="Bold" FontSize="22"/>
+        <ListView Name="lstInstructions" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="20,0,0,32"/>
 
-        <Button Name="btnAddToYourGarden" Grid.Column="3" Grid.Row="6" Margin="10" Content="Add to your garden" Click="btnAddToYourGarden_Click"/>
+        <Button Name="btnAddToYourGarden" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2" Margin="10" Content="Add plant to your garden" Click="btnAddToYourGarden_Click" BorderBrush="#FF076F00" Background="#FF017512" FontFamily="Segoe Print" FontWeight="Bold"/>
         <Button Name="btnGoBack" Grid.Column="4" Grid.Row="1" Margin="60,0" Content="Go back" Click="btnGoBack_Click" />
 
-        <TextBox Name="txtPlantName" Grid.Column="2" Grid.Row="2" Margin="0,0,0,30" IsReadOnly="True"/>
-        <TextBox Name="txtBotanicalName" Grid.Column="2" Grid.Row="3" Margin="0,0,0,30" IsReadOnly="True"/>
-        <TextBox Name="txtFamily" Grid.Column="2" Grid.Row="4" Margin="0,0,0,30" IsReadOnly="True"/>
-        <TextBox Name="txtColor" Grid.Column="2" Grid.Row="5" Margin="0,0,0,30" IsReadOnly="True"/>
+        <TextBox Name="txtPlantName" Grid.Column="2" Grid.Row="2" Margin="0,0,0,30" IsReadOnly="True" TextWrapping="Wrap"/>
+        <TextBox Name="txtBotanicalName" Grid.Column="2" Grid.Row="3" Margin="0,0,0,30" IsReadOnly="True" TextWrapping="Wrap"/>
+        <TextBox Name="txtFamily" Grid.Column="2" Grid.Row="4" Margin="0,0,0,30" IsReadOnly="True" TextWrapping="Wrap"/>
+        <TextBox Name="txtColor" Grid.Column="2" Grid.Row="5" Margin="0,0,0,30" IsReadOnly="True" TextWrapping="Wrap"/>
 
 
        

@@ -27,7 +27,6 @@ namespace GreenThumbDb
 
             }
 
-
             var plant = PlantManager.SearchForPlant(txtPlantName.Text);
             if (plant == null)
             {
@@ -36,13 +35,12 @@ namespace GreenThumbDb
                 txtInstructionName.IsEnabled = true;
                 txtDescription.IsEnabled = true;
 
-
-
                 newPlant.EnglishName = txtPlantName.Text;
                 newPlant.BotanicalName = txtBotanicalName.Text;
                 newPlant.Family = txtPlantFamily.Text;
                 newPlant.Color = txtColor.Text;
-                MessageBox.Show("Plant is added.Now you can give your plant instructions! Then press save.");
+                MessageBox.Show("Plant is added. Now you can give your plant instructions! Then press save.");
+                btnAddInsctructions.IsEnabled = true;
 
             }
             else
@@ -53,15 +51,13 @@ namespace GreenThumbDb
         }
 
         private void btnAddInsctructions_Click(object sender, RoutedEventArgs e)
-
         {
 
-            if (txtInstructionName.Text == "" && txtDescription.Text == "")
+            if (txtInstructionName.Text == "" || txtDescription.Text == "")
             {
                 MessageBox.Show("You have to fill in the instructions name and the instruction description!", "Warning");
                 return;
             }
-
 
             string instructionName = txtInstructionName.Text;
             string description = txtDescription.Text;
@@ -73,7 +69,7 @@ namespace GreenThumbDb
 
             ListViewItem item = new();
             item.Tag = newInstruction;
-            item.Content = newInstruction.Name;
+            item.Content = $"{newInstruction.Name} - Description: {newInstruction.Description}";
             lstPlantInstructions.Items.Add(item);
             txtInstructionName.Text = "";
             txtDescription.Text = "";
@@ -82,6 +78,11 @@ namespace GreenThumbDb
 
         private void btnSavePlant_Click(object sender, RoutedEventArgs e)
         {
+            if (txtPlantName.Text == "")
+            {
+                MessageBox.Show("You have to write a plant name to save the plant!");
+                return;
+            }
             foreach (ListViewItem item in lstPlantInstructions.Items)
             {
                 Instruction instruction = (Instruction)item.Tag;

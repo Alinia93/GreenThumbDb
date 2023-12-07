@@ -5,51 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GreenThumbDb"
         mc:Ignorable="d"
-        Title="PlantWindow" Height="450" Width="800">
+        Title="PlantWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
-       
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="20"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="20"/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition Height="20"/>
-            </Grid.RowDefinitions>
 
-            <Image Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="6" Margin="100,5" Opacity="0.2">
-                <Image.Source>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
 
-                    <BitmapImage UriSource="C:\Users\alini\OneDrive\Skrivbord\Databasutveckling\Slutuppgift\GreenThumbDb\GreenThumbDb\pictures\FrontPicture.png"/>
-                </Image.Source>
+        <Image Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="6" Margin="100,5" Opacity="0.2">
+            <Image.Source>
+                <BitmapImage UriSource="C:\Users\alini\OneDrive\Skrivbord\Databasutveckling\Slutuppgift\GreenThumbDb\GreenThumbDb\pictures\FrontPicture.png"/>
+            </Image.Source>
+        </Image>
 
-            </Image>
-            <Label Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Content="GREEN THUMB" FontSize="50" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" FontWeight="Bold" FontFamily="Bahnschrift Condensed" Foreground="#FF125600"/>
-        <Label Content="Choose a plant: " Grid.Column="1" Grid.Row="2" FontSize="17" FontFamily="Sylfaen" />
-        <ComboBox Name="cmbPlants" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Margin="150,0,0,20" />
+        <Label Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Content="GREEN THUMB" FontSize="50" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" FontWeight="Bold" FontFamily="Bahnschrift Condensed" Foreground="#FF125600"/>
+        <Label Content="Search for plant: " Grid.Column="1" Grid.Row="2" FontSize="17" FontFamily="Sylfaen" />
+        <Label Content="Or choose a plant: " Grid.Column="1" Grid.Row="3" FontSize="17" FontFamily="Sylfaen" />
 
-        <Button Name ="btnSearchForPlant" Grid.Column="3" Grid.Row="3" Margin="10,0,100,20" Content="Search" Click="btnSearchForPlant_Click"/>
+        <ComboBox Name="cmbPlants" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Margin="150,0,30,20" />
+        <TextBox Name ="txtSearchPlant" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Margin="150,0,70,20"/>
 
-        <Label Content="Or search for plant: " Grid.Column="1" Grid.Row="3" FontSize="17" FontFamily="Sylfaen" />
-        <TextBox Name ="txtSearchPlant" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Margin="150,0,0,20"/>
 
-        <Button Name ="btnDetails" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="2" Margin="120,0,25,20"  Content="See details/Add plant to your garden"   FontSize="10" Click="btnDetails_Click"/>
-        <Button Name ="btnDelete" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="2" Margin="120,0,170,20"  Content="Delete plant" FontSize="10" Click="btnDelete_Click"/>
-        <Button Grid.Column="1" Grid.Row="4"   Content="Add new plant!"   FontSize="18" Click="Button_Click"/>
-        <Button Name="btnGoBack" Grid.Column="4" Grid.Row="6" Margin="10" Content="Go back" Click="btnGoBack_Click"/>
-        
-        
-        <Button  Name="btnGoToYourGarden" Margin="20,0,20,0" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Click="btnGoToYourGarden_Click">
+        <Button Name ="btnSearchForPlant" Grid.Column="2" Grid.Row="2" Margin="0,0,20,20" Content="Search" Click="btnSearchForPlant_Click" HorizontalAlignment="Right"/>
+        <Button Name ="btnDetails" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Margin="20,0,20,0"  Content="See details/Add plant to your garden"   FontSize="18" Click="btnDetails_Click" FontFamily="Book Antiqua" Background="#FF02FFBD"/>
+        <Button Name ="btnDelete" Grid.Column="1" Grid.Row="5" Margin="20,10,70,0"   Content="Delete plant" FontSize="10" Click="btnDelete_Click"/>
+        <Button Name ="btnAddNewPlant" Grid.Column="3" Grid.Row="2"   Content="Add new plant!"  Margin="10,0,0,0" FontSize="18" Click="btnAddNewPlant_Click" FontFamily="Book Antiqua"/>
+        <Button Name="btnGoBack" Grid.Column="1" Grid.Row="1" Margin="0,0,100,20" Content="Go back" Click="btnGoBack_Click_1" />
+        <Button  Name="btnGoToYourGarden" Margin="20,0,20,0" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2" Click="btnGoToYourGarden_Click_1" >
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border Background="ForestGreen" BorderBrush="Black" BorderThickness="1" CornerRadius="25">
@@ -59,6 +56,10 @@
             </Button.Template>
             <TextBlock Text="GO TO YOUR GARDEN"  FontFamily="Segoe Print" FontSize="20"/>
         </Button>
+        
+        
+        
+        <Border Grid.Column="2" Grid.Row="2" Grid.RowSpan="10"  Width="2" Margin="180,0,0,0" BorderBrush="Black" BorderThickness="2"/>
 
     </Grid>
 </Window>

@@ -16,27 +16,24 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="20"/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="20"/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition Height="20"/>
-            </Grid.RowDefinitions>
-
-            <Image Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="6" Margin="100,5" Opacity="0.2">
-                <Image.Source>
-
-                    <BitmapImage UriSource="C:\Users\alini\OneDrive\Skrivbord\Databasutveckling\Slutuppgift\GreenThumbDb\GreenThumbDb\pictures\FrontPicture.png"/>
-                </Image.Source>
-
-            </Image>
-            <Label Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Content="GREEN THUMB" FontSize="50" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" FontWeight="Bold" FontFamily="Bahnschrift Condensed" Foreground="#FF125600"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
         
+        <Image Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="6" Margin="100,5" Opacity="0.2">
+            <Image.Source>
+                <BitmapImage UriSource="C:\Users\alini\OneDrive\Skrivbord\Databasutveckling\Slutuppgift\GreenThumbDb\GreenThumbDb\pictures\FrontPicture.png"/>
+            </Image.Source>
+        </Image>
 
+        <Label Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Content="GREEN THUMB" FontSize="50" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" FontWeight="Bold" FontFamily="Bahnschrift Condensed" Foreground="#FF125600"/>
         <Label Grid.Column="2" Grid.Row="2" Content="User name: " HorizontalContentAlignment="Right" FontSize="20" />
         <Label Grid.Column="2" Grid.Row="3" Content="Password: " HorizontalContentAlignment="Right" FontSize="20" />
         <Label Grid.Column="2" Grid.Row="4" Content="Comfirm password: " HorizontalContentAlignment="Right" FontSize="20" />
@@ -46,7 +43,7 @@
         <PasswordBox Name ="txtComfirmPassword" Grid.Column="3" Grid.Row="4" Margin="0,3,0,30" PasswordChanged="txtComfirmPassword_PasswordChanged"/>
 
         <Button Name ="btnRegister" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" Content="Register" FontSize="30" Background="#FF55DD1E" FontFamily="Tempus Sans ITC" Click="btnRegister_Click" />
-
-        <Button Name="btnGoBack" Grid.Column="4" Grid.Row="6" Margin="10" Content="Go back" Click="btnGoBack_Click"/>
+        <Button Name="btnGoBack" Grid.Column="1" Grid.Row="1" Margin="0,0,100,20" Content="Go back" Click="btnGoBack_Click_1" />
+       
     </Grid>
 </Window>
