@@ -27,14 +27,15 @@ namespace GreenThumbDb
 
             }
 
-            txtAddInstructionsFor.Text = txtPlantName.Text;
-            txtAddInstructionsFor.IsEnabled = true;
-            txtInstructionName.IsEnabled = true;
-            txtDescription.IsEnabled = true;
 
             var plant = PlantManager.SearchForPlant(txtPlantName.Text);
             if (plant == null)
             {
+                txtAddInstructionsFor.Text = txtPlantName.Text;
+                txtAddInstructionsFor.IsEnabled = true;
+                txtInstructionName.IsEnabled = true;
+                txtDescription.IsEnabled = true;
+
 
 
                 newPlant.EnglishName = txtPlantName.Text;
@@ -60,8 +61,7 @@ namespace GreenThumbDb
                 MessageBox.Show("You have to fill in the instructions name and the instruction description!", "Warning");
                 return;
             }
-            txtInstructionName.Text = "";
-            txtDescription.Text = "";
+
 
             string instructionName = txtInstructionName.Text;
             string description = txtDescription.Text;
@@ -75,6 +75,8 @@ namespace GreenThumbDb
             item.Tag = newInstruction;
             item.Content = newInstruction.Name;
             lstPlantInstructions.Items.Add(item);
+            txtInstructionName.Text = "";
+            txtDescription.Text = "";
 
         }
 

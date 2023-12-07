@@ -17,7 +17,12 @@ namespace GreenThumbDb
         public PlantWindow()
         {
             InitializeComponent();
+            UpdateUi();
 
+        }
+        private void UpdateUi()
+        {
+            cmbPlants.Items.Clear();
             using (AppDbContext context = new())
             {
                 UnitOfWorkRepository uow = new(context);
@@ -86,6 +91,35 @@ namespace GreenThumbDb
             AddPlantWindow addPlantWindow = new();
             addPlantWindow.Show();
             Close();
+        }
+
+        private void btnGoToYourGarden_Click(object sender, RoutedEventArgs e)
+        {
+            MyGardenWindow myGardenWindow = new();
+            myGardenWindow.Show();
+            Close();
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (cmbPlants.SelectedItem != null)
+            {
+                ComboBoxItem selectedItem = (ComboBoxItem)cmbPlants.SelectedItem;
+                Plant plant = (Plant)selectedItem.Tag;
+                using (AppDbContext context = new())
+                {
+                    UnitOfWorkRepository uow = new(context);
+                    uow.PlantRepository.Delete(plant);
+                    uow.Complete();
+                    MessageBox.Show("The plant is removed", "Removed");
+                    cmbPlants.SelectedItem = null;
+                    UpdateUi();
+                }
+            }
+            else
+            {
+                MessageBox.Show("You have to select a plant to be able to remove it.", "Warning");
+            }
         }
     }
 }

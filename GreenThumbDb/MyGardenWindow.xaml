@@ -36,7 +36,7 @@
         <Label Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Content="GREEN THUMB" FontSize="50" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" FontWeight="Bold" FontFamily="Bahnschrift Condensed" Foreground="#FF125600"/>
 
         <Label Content="Your plants" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2" FontSize="40" HorizontalAlignment="Center" FontFamily="Book Antiqua"/>
-
-        <ListView Name="lstPlantsInstructions"/>
+        <Button Name="btnGoBack" Grid.Column="4" Grid.Row="1" Margin="60,0" Content="Go back" Click="btnGoBack_Click" />
+        <ListView Name="lstPlantsInstructions" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="4" Grid.RowSpan="4"/>
     </Grid>
 </Window>
