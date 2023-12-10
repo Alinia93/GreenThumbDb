@@ -70,10 +70,12 @@ namespace GreenThumbDb
             txtColor.Text = selectedPlant.Color;
             txtFamily.Text = selectedPlant.Family;
 
+
             List<Instruction> instructions = selectedPlant.Instructions.ToList();
             int number = 1;
             foreach (Instruction instruction in instructions)
             {
+                // Kod för att fetmarkera viss text
                 TextBlock txtBlock = new();
 
                 Run newRun = new($"{number}. ");

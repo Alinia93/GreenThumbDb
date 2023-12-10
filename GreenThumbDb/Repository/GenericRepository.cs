@@ -18,11 +18,7 @@ namespace GreenThumbDb.Repository
 
         }
 
-        public T? GetById(int id)
-        {
-            return _dbSet.Find(id);
 
-        }
 
         public List<T> GetAll()
         {
@@ -36,6 +32,7 @@ namespace GreenThumbDb.Repository
         public void Delete(T entity)
         {
             _dbSet.Remove(entity);
+
         }
 
 
